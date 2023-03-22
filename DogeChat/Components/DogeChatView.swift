@@ -116,20 +116,22 @@ struct DogeChatView: View {
                         await _sendMessage()
                     }
                 }) {
-                    Text("Retry Send")
+                    // Retry Send
+                    Text("重试")
                         .font(.caption2)
                         .foregroundColor(.accentColor)
                 }
             }
             
             HStack {
-                TextField("Ask something...", text: $input)
+                // Ask something...
+                TextField("问问看...", text: $input, axis: .vertical)
                     .padding(10)
                     .background(Color.gray.opacity(0.2))
-                    .clipShape(Capsule())
+                    .cornerRadius(30)
                     .onChange(of: input) { newValue in
                         withAnimation {
-                            sendButtonColor = newValue.isEmpty ? Color.white : Color.accentColor
+                            sendButtonColor = newValue.isEmpty ? Color("BaseBackground") : Color.accentColor
                         }
                     }
                 if input != "" {
@@ -138,14 +140,17 @@ struct DogeChatView: View {
                             await sendMessage()
                         }
                     }) {
-                        Text("Send")
-                            .bold()
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 10)
-                            .animation(.linear, value: 0.3)
-                            .background(sendButtonColor)
-                            .foregroundColor(.white)
-                            .clipShape(Capsule())
+                        VStack {
+                            // Send
+                            Text("发送")
+                                .bold()
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 10)
+                                .animation(.linear, value: 0.3)
+                                .background(sendButtonColor)
+                                .foregroundColor(.white)
+                                .clipShape(Capsule())
+                        }
                     }
                     .disabled(input.isEmpty)
                 }

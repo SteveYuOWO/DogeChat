@@ -12,25 +12,22 @@ struct MainView: View {
     @State var showConfigView: Bool = false
     var body: some View {
         ZStack {
-            NavigationView {
-                DogeChatView(showConfigView: $showConfigView)
-                    .onAppear {
-                        if appConfig.OPEN_AI_API_KEY.isEmpty {
-                            showConfigView = true
-                        }
+            DogeChatView(showConfigView: $showConfigView)
+                .onAppear {
+                    if appConfig.OPEN_AI_API_KEY.isEmpty {
+                        showConfigView = true
                     }
-                    .sheet(isPresented: $showConfigView, onDismiss: {
-                        if appConfig.OPEN_AI_API_KEY.isEmpty {
-                            showConfigView = true
-                        }
-                    }) {
-                        ConfigView(showConfigView: $showConfigView)
-                            .presentationDetents([.height(280), .medium, .large])
+                }
+                .sheet(isPresented: $showConfigView, onDismiss: {
+                    if appConfig.OPEN_AI_API_KEY.isEmpty {
+                        showConfigView = true
+                    }
+                }) {
+                    ConfigView(showConfigView: $showConfigView)
+                        .presentationDetents([.height(280), .medium, .large])
 //                            .presentationDetents([.height(420), .medium, .large])
-                            .presentationDragIndicator(.automatic)
-                    }
-                    
-            }
+                        .presentationDragIndicator(.automatic)
+                }
             .alert(isPresented: $appConfig.showToast) {
                 Alert(title: Text(appConfig.toastTitle),
                       message: Text(appConfig.toastMessage),
