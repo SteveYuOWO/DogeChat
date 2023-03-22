@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct DogeChatApp: App {
+    var appConfig = AppConfig()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
+                .environmentObject(appConfig)
         }
     }
 }

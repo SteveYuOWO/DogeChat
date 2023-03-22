@@ -8,17 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		9F51FE9029C88C2F00E88ABE /* DogeChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51FE8F29C88C2F00E88ABE /* DogeChatApp.swift */; };
-		9F51FE9229C88C2F00E88ABE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51FE9129C88C2F00E88ABE /* ContentView.swift */; };
+		9F51FE9229C88C2F00E88ABE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51FE9129C88C2F00E88ABE /* MainView.swift */; };
 		9F51FE9429C88C3000E88ABE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F51FE9329C88C3000E88ABE /* Assets.xcassets */; };
 		9F51FE9729C88C3000E88ABE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F51FE9629C88C3000E88ABE /* Preview Assets.xcassets */; };
+		9F51FE9F29C88CDB00E88ABE /* DogeChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51FE9E29C88CDB00E88ABE /* DogeChatView.swift */; };
+		9F51FEAF29C8A23C00E88ABE /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51FEAE29C8A23C00E88ABE /* AppConfig.swift */; };
+		9F831A2129CA4C18006FD154 /* OpenAIStreamingCompletions in Frameworks */ = {isa = PBXBuildFile; productRef = 9F831A2029CA4C18006FD154 /* OpenAIStreamingCompletions */; };
+		9FBBE3B629C8EAB700CB28F1 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 9FBBE3B529C8EAB700CB28F1 /* MarkdownUI */; };
+		9FBBE3CC29C9FD0C00CB28F1 /* OpenAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBBE3CB29C9FD0C00CB28F1 /* OpenAI.swift */; };
+		9FF74F5129CB089F005309CA /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF74F5029CB089F005309CA /* ConfigView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9F51FE8C29C88C2F00E88ABE /* DogeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F51FE8F29C88C2F00E88ABE /* DogeChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogeChatApp.swift; sourceTree = "<group>"; };
-		9F51FE9129C88C2F00E88ABE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9F51FE9129C88C2F00E88ABE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		9F51FE9329C88C3000E88ABE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F51FE9629C88C3000E88ABE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9F51FE9E29C88CDB00E88ABE /* DogeChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogeChatView.swift; sourceTree = "<group>"; };
+		9F51FEAE29C8A23C00E88ABE /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		9FBBE3CB29C9FD0C00CB28F1 /* OpenAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAI.swift; sourceTree = "<group>"; };
+		9FF74F5029CB089F005309CA /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FBBE3B629C8EAB700CB28F1 /* MarkdownUI in Frameworks */,
+				9F831A2129CA4C18006FD154 /* OpenAIStreamingCompletions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,8 +63,9 @@
 		9F51FE8E29C88C2F00E88ABE /* DogeChat */ = {
 			isa = PBXGroup;
 			children = (
-				9F51FE8F29C88C2F00E88ABE /* DogeChatApp.swift */,
-				9F51FE9129C88C2F00E88ABE /* ContentView.swift */,
+				9F51FEAD29C8A22600E88ABE /* Data */,
+				9F51FEAA29C8917100E88ABE /* Library */,
+				9F51FE9D29C88C3700E88ABE /* Components */,
 				9F51FE9329C88C3000E88ABE /* Assets.xcassets */,
 				9F51FE9529C88C3000E88ABE /* Preview Content */,
 			);
@@ -65,6 +78,33 @@
 				9F51FE9629C88C3000E88ABE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9F51FE9D29C88C3700E88ABE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9F51FE8F29C88C2F00E88ABE /* DogeChatApp.swift */,
+				9F51FE9129C88C2F00E88ABE /* MainView.swift */,
+				9F51FE9E29C88CDB00E88ABE /* DogeChatView.swift */,
+				9FF74F5029CB089F005309CA /* ConfigView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		9F51FEAA29C8917100E88ABE /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				9FBBE3CB29C9FD0C00CB28F1 /* OpenAI.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		9F51FEAD29C8A22600E88ABE /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9F51FEAE29C8A23C00E88ABE /* AppConfig.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +123,10 @@
 			dependencies = (
 			);
 			name = DogeChat;
+			packageProductDependencies = (
+				9FBBE3B529C8EAB700CB28F1 /* MarkdownUI */,
+				9F831A2029CA4C18006FD154 /* OpenAIStreamingCompletions */,
+			);
 			productName = DogeChat;
 			productReference = 9F51FE8C29C88C2F00E88ABE /* DogeChat.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +155,10 @@
 				Base,
 			);
 			mainGroup = 9F51FE8329C88C2F00E88ABE;
+			packageReferences = (
+				9FBBE3B429C8EAB700CB28F1 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
+				9F831A1F29CA4C18006FD154 /* XCRemoteSwiftPackageReference "openai-streaming-completions-swift" */,
+			);
 			productRefGroup = 9F51FE8D29C88C2F00E88ABE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +185,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F51FE9229C88C2F00E88ABE /* ContentView.swift in Sources */,
+				9F51FE9229C88C2F00E88ABE /* MainView.swift in Sources */,
 				9F51FE9029C88C2F00E88ABE /* DogeChatApp.swift in Sources */,
+				9F51FE9F29C88CDB00E88ABE /* DogeChatView.swift in Sources */,
+				9FF74F5129CB089F005309CA /* ConfigView.swift in Sources */,
+				9FBBE3CC29C9FD0C00CB28F1 /* OpenAI.swift in Sources */,
+				9F51FEAF29C8A23C00E88ABE /* AppConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +304,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -339,6 +392,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9F831A1F29CA4C18006FD154 /* XCRemoteSwiftPackageReference "openai-streaming-completions-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SteveYuOWO/openai-streaming-completions-swift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		9FBBE3B429C8EAB700CB28F1 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9F831A2029CA4C18006FD154 /* OpenAIStreamingCompletions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F831A1F29CA4C18006FD154 /* XCRemoteSwiftPackageReference "openai-streaming-completions-swift" */;
+			productName = OpenAIStreamingCompletions;
+		};
+		9FBBE3B529C8EAB700CB28F1 /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9FBBE3B429C8EAB700CB28F1 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9F51FE8429C88C2F00E88ABE /* Project object */;
 }
