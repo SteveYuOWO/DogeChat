@@ -13,8 +13,18 @@ struct ConfigView: View {
     @State private var submitButtonBackground = Color.accentColor.opacity(0.7)
     @State private var show = true
     @Binding var showConfigView: Bool
+    
+    let isPad = UIDevice.current.userInterfaceIdiom == .pad
     var body: some View {
         VStack {
+            if isPad {
+                Image("doge")
+                    .resizable()
+                    .frame(width: 250, height: 250)
+                    .clipShape(Circle())
+                    .padding(.bottom, 40)
+            }
+            
             Text("设置 API KEY 后开始使用 APP")
                 .bold()
                 .font(.system(size: 20))
@@ -22,6 +32,7 @@ struct ConfigView: View {
                 .padding(.bottom, 14)
             
             SecureField("OpenAI API KEY", text: $appConfig.OPEN_AI_API_KEY)
+                .frame(maxWidth: isPad ? 400: .infinity)
                 .padding()
                 .background(Color.gray.opacity(0.2))
                 .cornerRadius(5.0)
@@ -44,7 +55,7 @@ struct ConfigView: View {
                 }
             }) {
                     Text("继续")
-                        .frame(maxWidth: .infinity)
+                        .frame(maxWidth: isPad ? 400: .infinity)
                         .foregroundColor(.white)
                         .padding()
             }
