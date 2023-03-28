@@ -15,6 +15,10 @@ struct DogeChatApp: App {
         WindowGroup {
             MainView()
                 .environmentObject(appConfig)
+                .onTapGesture {
+                    // hide keyboard
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }
         }
     }
 }
