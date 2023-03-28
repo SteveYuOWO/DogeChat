@@ -28,11 +28,6 @@ struct MainView: View {
 //                            .presentationDetents([.height(420), .medium, .large])
                         .presentationDragIndicator(.automatic)
                 }
-            .alert(isPresented: $appConfig.showToast) {
-                Alert(title: Text(appConfig.toastTitle),
-                      message: Text(appConfig.toastMessage),
-                      dismissButton: .default(Text("好的")))
-            }
         }
     }
 }

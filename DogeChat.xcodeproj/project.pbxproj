@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F01FD4A29CBF9F8009AB26E /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F01FD4929CBF9F8009AB26E /* CompletionView.swift */; };
+		9F01FD4C29CBFA35009AB26E /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F01FD4B29CBFA35009AB26E /* MessageView.swift */; };
 		9F51FE9029C88C2F00E88ABE /* DogeChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51FE8F29C88C2F00E88ABE /* DogeChatApp.swift */; };
 		9F51FE9229C88C2F00E88ABE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51FE9129C88C2F00E88ABE /* MainView.swift */; };
 		9F51FE9429C88C3000E88ABE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F51FE9329C88C3000E88ABE /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F01FD4929CBF9F8009AB26E /* CompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
+		9F01FD4B29CBFA35009AB26E /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		9F51FE8C29C88C2F00E88ABE /* DogeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F51FE8F29C88C2F00E88ABE /* DogeChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogeChatApp.swift; sourceTree = "<group>"; };
 		9F51FE9129C88C2F00E88ABE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -87,6 +91,8 @@
 				9F51FE9129C88C2F00E88ABE /* MainView.swift */,
 				9F51FE9E29C88CDB00E88ABE /* DogeChatView.swift */,
 				9FF74F5029CB089F005309CA /* ConfigView.swift */,
+				9F01FD4929CBF9F8009AB26E /* CompletionView.swift */,
+				9F01FD4B29CBFA35009AB26E /* MessageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -185,9 +191,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F01FD4A29CBF9F8009AB26E /* CompletionView.swift in Sources */,
 				9F51FE9229C88C2F00E88ABE /* MainView.swift in Sources */,
 				9F51FE9029C88C2F00E88ABE /* DogeChatApp.swift in Sources */,
 				9F51FE9F29C88CDB00E88ABE /* DogeChatView.swift in Sources */,
+				9F01FD4C29CBFA35009AB26E /* MessageView.swift in Sources */,
 				9FF74F5129CB089F005309CA /* ConfigView.swift in Sources */,
 				9FBBE3CC29C9FD0C00CB28F1 /* OpenAI.swift in Sources */,
 				9F51FEAF29C8A23C00E88ABE /* AppConfig.swift in Sources */,

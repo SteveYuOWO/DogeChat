@@ -11,12 +11,7 @@ import OpenAIStreamingCompletions
 class AppConfig: ObservableObject {
     /// Basic properties
     @AppStorage("OPEN_AI_API_KEY")
-    var OPEN_AI_API_KEY: String = "" 
-    
-    /// Toast properties
-    @Published var showToast = false
-    @Published var toastTitle = ""
-    @Published var toastMessage = ""
+    var OPEN_AI_API_KEY: String = ""
     
 //    init() {
 //        clearConfig()
