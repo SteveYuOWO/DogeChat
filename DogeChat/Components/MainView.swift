@@ -23,11 +23,16 @@ struct MainView: View {
                         showConfigView = true
                     }
                 }) {
-                    ConfigView(showConfigView: $showConfigView)
-                        .presentationDetents([.height(280), .medium, .large])
-//                            .presentationDetents([.height(420), .medium, .large])
-                        .presentationDragIndicator(.automatic)
+                    if #available(iOS 16.0, *) {
+                        ConfigView(showConfigView: $showConfigView)
+                            .presentationDetents([.height(280), .medium, .large])
+                            .presentationDragIndicator(.automatic)
+                    } else {
+                        // iOS 15 or earlier
+                        ConfigView(showConfigView: $showConfigView)
+                    }
                 }
+                    
         }
     }
 }

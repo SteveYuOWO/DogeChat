@@ -129,7 +129,7 @@ struct DogeChatView: View {
             
             HStack {
                 // Ask something...
-                TextField("问问看...", text: $input, axis: .vertical)
+                TextField("问问看...", text: $input)
                     .padding(10)
                     .background(completion == nil ? Color.gray.opacity(0.2) : Color.gray.opacity(0.6))
                     .cornerRadius(30)
@@ -178,7 +178,7 @@ struct DogeChatView: View {
     
     func _sendMessage() async {
         withAnimation {
-            self.completion = try! OpenAIAPI(apiKey: appConfig.OPEN_AI_API_KEY, origin: "http://66.135.0.79:443").completeChatStreamingWithObservableObject(.init(messages: messages))
+            self.completion = try! OpenAIAPI(apiKey: appConfig.OPEN_AI_API_KEY, origin: OPEN_AI_ORIGIN).completeChatStreamingWithObservableObject(.init(messages: messages))
         }
     }
 }
