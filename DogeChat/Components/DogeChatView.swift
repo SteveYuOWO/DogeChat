@@ -71,7 +71,7 @@ struct DogeChatView: View {
                 .alert(isPresented: $showConfirmClearAlert) {
                     // Confirmation
                     // Are you sure you want to clear all messages?
-                    Alert(title: Text("确认"), message: Text("清楚所有消息嘛？"),
+                    Alert(title: Text("确认"), message: Text("清除所有消息嘛？"),
                         primaryButton: .cancel(Text("取消")), secondaryButton: .default(Text("是的"), action: {
                         messages = [
                             .init(role: .system, content: "你好，我是修勾。有什么要问我的?")
