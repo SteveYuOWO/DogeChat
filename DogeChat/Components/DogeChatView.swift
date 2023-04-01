@@ -178,7 +178,7 @@ struct DogeChatView: View {
     
     func _sendMessage() async {
         withAnimation {
-            self.completion = try! OpenAIAPI(apiKey: appConfig.OPEN_AI_API_KEY, origin: OPEN_AI_ORIGIN).completeChatStreamingWithObservableObject(.init(messages: messages))
+            self.completion = try! OpenAIAPI(apiKey: appConfig.OPEN_AI_API_KEY, origin: appConfig.OPEN_AI_ORIGIN).completeChatStreamingWithObservableObject(.init(messages: messages))
         }
     }
 }

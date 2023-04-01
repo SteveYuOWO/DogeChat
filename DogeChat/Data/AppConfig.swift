@@ -13,6 +13,13 @@ class AppConfig: ObservableObject {
     @AppStorage("OPEN_AI_API_KEY")
     var OPEN_AI_API_KEY: String = ""
     
+    /// constant variables
+    let OPEN_AI_KEY_LINK = "https://platform.openai.com/account/api-keys"
+    let OPEN_AI_ORIGIN = "http://170.106.171.202"
+    
+    var openAIAPITools: OpenAIAPITools {
+        OpenAIAPITools(OPEN_AI_API_KEY: OPEN_AI_API_KEY, OPEN_AI_ORIGIN: OPEN_AI_ORIGIN)
+    }
 //    init() {
 //        clearConfig()
 //    }
