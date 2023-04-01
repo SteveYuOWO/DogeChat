@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire",
+      "state" : {
+        "branch" : "master",
+        "revision" : "fd87f7ce7461197ea5af6e4a865168b8fc913ee0"
+      }
+    },
+    {
       "identity" : "openai-streaming-completions-swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SteveYuOWO/openai-streaming-completions-swift",

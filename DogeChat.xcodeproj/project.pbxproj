@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9F01FD4A29CBF9F8009AB26E /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F01FD4929CBF9F8009AB26E /* CompletionView.swift */; };
 		9F01FD4C29CBFA35009AB26E /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F01FD4B29CBFA35009AB26E /* MessageView.swift */; };
+		9F28822A29D7E0560045A90E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F28822929D7E0560045A90E /* Alamofire */; };
 		9F51FE9029C88C2F00E88ABE /* DogeChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51FE8F29C88C2F00E88ABE /* DogeChatApp.swift */; };
 		9F51FE9229C88C2F00E88ABE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51FE9129C88C2F00E88ABE /* MainView.swift */; };
 		9F51FE9429C88C3000E88ABE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F51FE9329C88C3000E88ABE /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F28822A29D7E0560045A90E /* Alamofire in Frameworks */,
 				9FBBE3B629C8EAB700CB28F1 /* MarkdownUI in Frameworks */,
 				9F831A2129CA4C18006FD154 /* OpenAIStreamingCompletions in Frameworks */,
 			);
@@ -132,6 +134,7 @@
 			packageProductDependencies = (
 				9FBBE3B529C8EAB700CB28F1 /* MarkdownUI */,
 				9F831A2029CA4C18006FD154 /* OpenAIStreamingCompletions */,
+				9F28822929D7E0560045A90E /* Alamofire */,
 			);
 			productName = DogeChat;
 			productReference = 9F51FE8C29C88C2F00E88ABE /* DogeChat.app */;
@@ -164,6 +167,7 @@
 			packageReferences = (
 				9FBBE3B429C8EAB700CB28F1 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 				9F831A1F29CA4C18006FD154 /* XCRemoteSwiftPackageReference "openai-streaming-completions-swift" */,
+				9F28822829D7E0560045A90E /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 9F51FE8D29C88C2F00E88ABE /* Products */;
 			projectDirPath = "";
@@ -410,6 +414,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9F28822829D7E0560045A90E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		9F831A1F29CA4C18006FD154 /* XCRemoteSwiftPackageReference "openai-streaming-completions-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SteveYuOWO/openai-streaming-completions-swift";
@@ -429,6 +441,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9F28822929D7E0560045A90E /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F28822829D7E0560045A90E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		9F831A2029CA4C18006FD154 /* OpenAIStreamingCompletions */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9F831A1F29CA4C18006FD154 /* XCRemoteSwiftPackageReference "openai-streaming-completions-swift" */;
