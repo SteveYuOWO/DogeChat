@@ -48,10 +48,12 @@ struct ConfigView: View {
                 }
             
             Button(action: {
-                if validateOpenAIAPIKey(apiKey: appConfig.OPEN_AI_API_KEY) {
-                    showConfigView = false
-                } else {
-                    showAPIKeyError = true
+                Task {
+                    if await appConfig.openAIAPITools.validateOpenAIAPIKey() {
+                        showConfigView = false
+                    } else {
+                        showAPIKeyError = true
+                    }
                 }
             }) {
                     Text("继续")
@@ -63,7 +65,7 @@ struct ConfigView: View {
             .background(submitButtonBackground)
             
             Button(action: {
-                UIApplication.shared.open(URL(string: OPEN_AI_KEY_LINK)!)
+                UIApplication.shared.open(URL(string: appConfig.OPEN_AI_KEY_LINK)!)
             }) {
                 Text("在 OpenAI 上寻找你的 API KEY")
                 // Find your API KEY at OpenAI
@@ -93,7 +95,7 @@ struct ConfigView: View {
         .alert(isPresented: $showAPIKeyError) {
             Alert(
                 title: Text("Invalid API KEY"),
-                message: Text("Register your apikey on the openai website"),
+                message: Text("The apikey is unavailable or has expired"),
                 dismissButton: .default(Text("Close"))
             )
         }

@@ -10,18 +10,6 @@ import WebKit
 import MarkdownUI
 import OpenAIStreamingCompletions
 
-struct HTMLView: UIViewRepresentable {
-    let htmlString: String
-    
-    func makeUIView(context: Context) -> WKWebView {
-        return WKWebView()
-    }
-    
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-        uiView.loadHTMLString(htmlString, baseURL: nil)
-    }
-}
-
 struct DogeChatView: View {
     @EnvironmentObject var appConfig: AppConfig
     @State var messages: [OpenAIAPI.Message] = [
@@ -48,7 +36,6 @@ struct DogeChatView: View {
                 Text("修勾Chat")
                     .font(.system(size: 20))
                     .bold()
-                
                 Spacer()
                 Button(action: {
                     showConfigView = true
@@ -126,7 +113,11 @@ struct DogeChatView: View {
                         .foregroundColor(.accentColor)
                 }
             }
-            
+            HStack {
+                MonthlyCost()
+                Spacer()
+            }
+            .padding(.horizontal)
             HStack {
                 // Ask something...
                 TextField("问问看...", text: $input)
@@ -143,6 +134,7 @@ struct DogeChatView: View {
                     Button(action: {
                         Task {
                             await sendMessage()
+                            appConfig.usage = await appConfig.openAIAPITools.usage()
                         }
                     }) {
                         VStack {
@@ -178,7 +170,7 @@ struct DogeChatView: View {
     
     func _sendMessage() async {
         withAnimation {
-            self.completion = try! OpenAIAPI(apiKey: appConfig.OPEN_AI_API_KEY, origin: OPEN_AI_ORIGIN).completeChatStreamingWithObservableObject(.init(messages: messages))
+            self.completion = try! OpenAIAPI(apiKey: appConfig.OPEN_AI_API_KEY, origin: appConfig.OPEN_AI_ORIGIN).completeChatStreamingWithObservableObject(.init(messages: messages))
         }
     }
 }
@@ -187,5 +179,29 @@ struct DogeChatView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
             .environmentObject(AppConfig())
+    }
+}
+
+struct MonthlyCost: View {
+    @EnvironmentObject var appConfig: AppConfig
+    var usage: UsageResponse {
+        appConfig.usage
+    }
+    var body: some View {
+        HStack {
+            if let totalUsage = usage.total_usage {
+                Text("该月已经消费: ")
+                    .font(.system(size: 14))
+                    .bold()
+                Image(systemName: "dollarsign.circle")
+                    .resizable()
+                    .frame(width: 16, height: 16)
+                    .foregroundColor(.accentColor)
+                Text("$\(String(format: "%.2f", totalUsage / 100))")
+                    .font(.system(size: 14))
+                    .bold()
+            }
+        }
+        .foregroundColor(.accentColor)
     }
 }

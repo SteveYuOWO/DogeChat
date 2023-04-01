@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct DogeChatApp: App {
-    var appConfig = AppConfig()
+    @StateObject var appConfig = AppConfig()
     
     var body: some Scene {
         WindowGroup {

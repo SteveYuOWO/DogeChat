@@ -14,12 +14,17 @@ struct MainView: View {
         ZStack {
             DogeChatView(showConfigView: $showConfigView)
                 .onAppear {
-                    if appConfig.OPEN_AI_API_KEY.isEmpty {
+                    let validateResult = appConfig.openAIAPITools.validateOpenAIAPIKey()
+                    if  !validateResult {
                         showConfigView = true
+                    }
+                    Task {
+                        appConfig.usage = await appConfig.openAIAPITools.usage()
                     }
                 }
                 .sheet(isPresented: $showConfigView, onDismiss: {
-                    if appConfig.OPEN_AI_API_KEY.isEmpty {
+                    let validateResult = appConfig.openAIAPITools.validateOpenAIAPIKey()
+                    if  !validateResult {
                         showConfigView = true
                     }
                 }) {
