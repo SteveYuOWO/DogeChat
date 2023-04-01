@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		9F01FD4A29CBF9F8009AB26E /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F01FD4929CBF9F8009AB26E /* CompletionView.swift */; };
 		9F01FD4C29CBFA35009AB26E /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F01FD4B29CBFA35009AB26E /* MessageView.swift */; };
+		9F28820929D72B570045A90E /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F28820829D72B570045A90E /* SettingView.swift */; };
+		9F28820B29D72C7E0045A90E /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F28820A29D72C7E0045A90E /* Conversation.swift */; };
+		9F28820D29D7461D0045A90E /* ConversationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F28820C29D7461D0045A90E /* ConversationListView.swift */; };
 		9F28822A29D7E0560045A90E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F28822929D7E0560045A90E /* Alamofire */; };
 		9F51FE9029C88C2F00E88ABE /* DogeChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51FE8F29C88C2F00E88ABE /* DogeChatApp.swift */; };
 		9F51FE9229C88C2F00E88ABE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51FE9129C88C2F00E88ABE /* MainView.swift */; };
@@ -20,11 +23,15 @@
 		9FBBE3B629C8EAB700CB28F1 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 9FBBE3B529C8EAB700CB28F1 /* MarkdownUI */; };
 		9FBBE3CC29C9FD0C00CB28F1 /* OpenAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBBE3CB29C9FD0C00CB28F1 /* OpenAI.swift */; };
 		9FF74F5129CB089F005309CA /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF74F5029CB089F005309CA /* ConfigView.swift */; };
+		9FF7903929D8BBE400F1CBDB /* Conversation+StaticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF7903829D8BBE400F1CBDB /* Conversation+StaticData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9F01FD4929CBF9F8009AB26E /* CompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
 		9F01FD4B29CBFA35009AB26E /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		9F28820829D72B570045A90E /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		9F28820A29D72C7E0045A90E /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		9F28820C29D7461D0045A90E /* ConversationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListView.swift; sourceTree = "<group>"; };
 		9F51FE8C29C88C2F00E88ABE /* DogeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F51FE8F29C88C2F00E88ABE /* DogeChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogeChatApp.swift; sourceTree = "<group>"; };
 		9F51FE9129C88C2F00E88ABE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -34,6 +41,7 @@
 		9F51FEAE29C8A23C00E88ABE /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		9FBBE3CB29C9FD0C00CB28F1 /* OpenAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAI.swift; sourceTree = "<group>"; };
 		9FF74F5029CB089F005309CA /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
+		9FF7903829D8BBE400F1CBDB /* Conversation+StaticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Conversation+StaticData.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +103,8 @@
 				9FF74F5029CB089F005309CA /* ConfigView.swift */,
 				9F01FD4929CBF9F8009AB26E /* CompletionView.swift */,
 				9F01FD4B29CBFA35009AB26E /* MessageView.swift */,
+				9F28820829D72B570045A90E /* SettingView.swift */,
+				9F28820C29D7461D0045A90E /* ConversationListView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -111,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				9F51FEAE29C8A23C00E88ABE /* AppConfig.swift */,
+				9F28820A29D72C7E0045A90E /* Conversation.swift */,
+				9FF7903829D8BBE400F1CBDB /* Conversation+StaticData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -197,7 +209,11 @@
 			files = (
 				9F01FD4A29CBF9F8009AB26E /* CompletionView.swift in Sources */,
 				9F51FE9229C88C2F00E88ABE /* MainView.swift in Sources */,
+				9F28820D29D7461D0045A90E /* ConversationListView.swift in Sources */,
 				9F51FE9029C88C2F00E88ABE /* DogeChatApp.swift in Sources */,
+				9FF7903929D8BBE400F1CBDB /* Conversation+StaticData.swift in Sources */,
+				9F28820929D72B570045A90E /* SettingView.swift in Sources */,
+				9F28820B29D72C7E0045A90E /* Conversation.swift in Sources */,
 				9F51FE9F29C88CDB00E88ABE /* DogeChatView.swift in Sources */,
 				9F01FD4C29CBFA35009AB26E /* MessageView.swift in Sources */,
 				9FF74F5129CB089F005309CA /* ConfigView.swift in Sources */,

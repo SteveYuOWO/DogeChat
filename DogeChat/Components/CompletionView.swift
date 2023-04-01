@@ -13,6 +13,7 @@ struct CompletionView: View {
     @Binding var showRetry: Bool
     @State var showError: Bool = false
     @Binding var messages: [OpenAIAPI.Message]
+    @State var activeSheet: ActiveSheet?
     
     let destructSelfCompletion: () -> Void
     

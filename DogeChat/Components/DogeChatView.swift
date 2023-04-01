@@ -12,17 +12,15 @@ import OpenAIStreamingCompletions
 
 struct DogeChatView: View {
     @EnvironmentObject var appConfig: AppConfig
-    @State var messages: [OpenAIAPI.Message] = [
-        .init(role: .system, content: "你好，我是修勾。有什么要问我的?")
-    ]
+
+    @Binding var conversation: Conversation
+    @Binding var messages: [OpenAIAPI.Message]
     @State var input = ""
     @State var sendButtonColor = Color.gray
     @State var showRetry = false
     @State var showConfirmClearAlert = false
     @State var showClearSuccess = false
     @State private var completion: StreamingCompletion? = nil
-    
-    @Binding var showConfigView: Bool
     
     var body: some View {
         VStack {
@@ -38,7 +36,7 @@ struct DogeChatView: View {
                     .bold()
                 Spacer()
                 Button(action: {
-                    showConfigView = true
+                    appConfig.activeSheet = .bootstrapConfigSheet
                 }) {
                     Image(systemName: "gear")
                          .resizable()
@@ -95,7 +93,12 @@ struct DogeChatView: View {
                 }
                 .onChange(of: messages) { _ in
                     withAnimation {
-                        scrollViewProxy.scrollTo(messages.count - 1, anchor: .top)
+                        scrollViewProxy.scrollTo(messages.count - 1, anchor: .bottom)
+                    }
+                }
+                .onAppear {
+                    withAnimation {
+                        scrollViewProxy.scrollTo(messages.count - 1, anchor: .bottom)
                     }
                 }
             }
@@ -153,6 +156,11 @@ struct DogeChatView: View {
                 }
             }
             .padding([.horizontal, .bottom])
+            .onTapGesture {
+                // hide keyboard
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
+            .navigationTitle(conversation.outline ?? "新的聊天")
         }
     }
     
@@ -170,7 +178,7 @@ struct DogeChatView: View {
     
     func _sendMessage() async {
         withAnimation {
-            self.completion = try! OpenAIAPI(apiKey: appConfig.OPEN_AI_API_KEY, origin: appConfig.OPEN_AI_ORIGIN).completeChatStreamingWithObservableObject(.init(messages: messages))
+            self.completion = try! appConfig.openAI_API.completeChatStreamingWithObservableObject(.init(messages: messages))
         }
     }
 }

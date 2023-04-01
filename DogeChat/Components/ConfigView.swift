@@ -12,7 +12,6 @@ struct ConfigView: View {
     @State private var showAPIKeyError = false
     @State private var submitButtonBackground = Color.accentColor.opacity(0.7)
     @State private var show = true
-    @Binding var showConfigView: Bool
     
     let isPad = UIDevice.current.userInterfaceIdiom == .pad
     var body: some View {
@@ -48,12 +47,10 @@ struct ConfigView: View {
                 }
             
             Button(action: {
-                Task {
-                    if await appConfig.openAIAPITools.validateOpenAIAPIKey() {
-                        showConfigView = false
-                    } else {
-                        showAPIKeyError = true
-                    }
+                if appConfig.openAIAPITools.validateOpenAIAPIKey() {
+                    appConfig.activeSheet = nil
+                } else {
+                    appConfig.activeSheet = .bootstrapConfigSheet
                 }
             }) {
                     Text("继续")
@@ -73,20 +70,6 @@ struct ConfigView: View {
                     .underline()
                     .foregroundColor(.accentColor)
             }
-            
-//            Text("或者")
-//                .bold()
-//                .padding()
-//            
-//            Button(action: {
-//            }) {
-//                    Text("免费试用14天")
-//                        .frame(maxWidth: .infinity)
-//                        .foregroundColor(.white)
-//                        .padding()
-//                        .cornerRadius(5.0)
-//            }
-//            .background(.pink)
         }
         .padding()
         .padding(.top, 50)
