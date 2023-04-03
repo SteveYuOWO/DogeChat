@@ -4,7 +4,7 @@
 
 修勾Chat 是一款 iOS 平台的 ChatGPT 实用聊天应用程序。
 
-### 代办列表
+### 待办列表
 
 [x] 支持markdown
 
