@@ -19,6 +19,7 @@
 		9F51FE9729C88C3000E88ABE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F51FE9629C88C3000E88ABE /* Preview Assets.xcassets */; };
 		9F51FE9F29C88CDB00E88ABE /* DogeChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51FE9E29C88CDB00E88ABE /* DogeChatView.swift */; };
 		9F51FEAF29C8A23C00E88ABE /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F51FEAE29C8A23C00E88ABE /* AppConfig.swift */; };
+		9F70778129DB3A7200C85416 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F70778029DB3A7200C85416 /* Spinner.swift */; };
 		9F831A2129CA4C18006FD154 /* OpenAIStreamingCompletions in Frameworks */ = {isa = PBXBuildFile; productRef = 9F831A2029CA4C18006FD154 /* OpenAIStreamingCompletions */; };
 		9FBBE3B629C8EAB700CB28F1 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 9FBBE3B529C8EAB700CB28F1 /* MarkdownUI */; };
 		9FBBE3CC29C9FD0C00CB28F1 /* OpenAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBBE3CB29C9FD0C00CB28F1 /* OpenAI.swift */; };
@@ -39,6 +40,7 @@
 		9F51FE9629C88C3000E88ABE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9F51FE9E29C88CDB00E88ABE /* DogeChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogeChatView.swift; sourceTree = "<group>"; };
 		9F51FEAE29C8A23C00E88ABE /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		9F70778029DB3A7200C85416 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		9FBBE3CB29C9FD0C00CB28F1 /* OpenAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAI.swift; sourceTree = "<group>"; };
 		9FF74F5029CB089F005309CA /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
 		9FF7903829D8BBE400F1CBDB /* Conversation+StaticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Conversation+StaticData.swift"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				9F01FD4B29CBFA35009AB26E /* MessageView.swift */,
 				9F28820829D72B570045A90E /* SettingView.swift */,
 				9F28820C29D7461D0045A90E /* ConversationListView.swift */,
+				9F70778029DB3A7200C85416 /* Spinner.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				9F51FE9229C88C2F00E88ABE /* MainView.swift in Sources */,
 				9F28820D29D7461D0045A90E /* ConversationListView.swift in Sources */,
 				9F51FE9029C88C2F00E88ABE /* DogeChatApp.swift in Sources */,
+				9F70778129DB3A7200C85416 /* Spinner.swift in Sources */,
 				9FF7903929D8BBE400F1CBDB /* Conversation+StaticData.swift in Sources */,
 				9F28820929D72B570045A90E /* SettingView.swift in Sources */,
 				9F28820B29D72C7E0045A90E /* Conversation.swift in Sources */,
@@ -361,7 +365,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.steveyuowo.DogeChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -394,7 +398,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.steveyuowo.DogeChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

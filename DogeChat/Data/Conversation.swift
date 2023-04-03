@@ -14,7 +14,7 @@ class Conversation: Identifiable, ObservableObject {
     @Published var isActive: Bool = false
     var input: String?
     var outline: String?
-
+    
     init(id: Int, messages: [OpenAIAPI.Message], input: String? = nil, outline: String? = nil) {
         self.id = id
         self.messages = messages

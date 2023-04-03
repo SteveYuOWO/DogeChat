@@ -14,7 +14,7 @@ extension Conversation {
         .init(role: .assistant, content: "当然可以，请问需要翻译哪种语言？"),
         .init(role: .user, content: "中文翻译成English"),
         .init(role: .assistant, content: "好的，请问需要翻译哪段中文？")
-    ], outline: "中文翻译成英文")
+    ], outline: "翻译请求：中文到英文")
     
     static let mahjong: Conversation = .init(id: 1, messages: [
         .init(role: .assistant, content: "你好，我是修勾。有什么要问我的"),
@@ -53,7 +53,7 @@ extension Conversation {
 5. 杠上开花：当玩家在杠牌后摸到了一张牌，手中的牌组成了特定的牌型，就可以杠上开花胡牌。
 
 以上是几种常见的胡牌方式，不同的麻将规则可能会有所不同。在实际游戏中，玩家需要根据手中的牌和场上的情况，灵活运用各种胡牌方式，以达到最高的得分。
-""")], outline: "麻将的介绍和胡牌方法")
+""")], outline: "麻将基本规则和获胜方法介绍")
     
     static let markdown: Conversation = .init(id: 2, messages: [
         .init(role: .assistant, content: "你好，我是修勾。有什么要问我的"),
@@ -94,7 +94,7 @@ extension Conversation {
 [链接文字](链接地址)
 
 ![图片描述](图片链接)
-""")], outline: "Markdown 示例文本")
+""")], outline: "Markdown语法的示例")
 
     static var sampleData: [Conversation] = [translationMessage, mahjong, markdown]
 }

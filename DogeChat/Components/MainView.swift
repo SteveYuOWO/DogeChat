@@ -16,9 +16,6 @@ struct MainView: View {
                 if  !validateResult {
                     appConfig.activeSheet = .bootstrapConfigSheet
                 }
-                Task {
-                    appConfig.usage = await appConfig.openAIAPITools.usage()
-                }
             }
             .sheet(item: $appConfig.activeSheet, onDismiss: {
                 // onDismiss and no apikey, activate the bootstrapConfig
