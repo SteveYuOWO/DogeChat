@@ -20,7 +20,6 @@ class OpenAIAPITools {
         ]
     }
 
-    
     func validateOpenAIAPIKey() -> Bool {
         guard OPEN_AI_API_KEY.count == 51 else { return false }
         guard OPEN_AI_API_KEY.hasPrefix("sk-") else { return false }

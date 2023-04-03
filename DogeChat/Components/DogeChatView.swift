@@ -12,9 +12,10 @@ import OpenAIStreamingCompletions
 
 struct DogeChatView: View {
     @EnvironmentObject var appConfig: AppConfig
-    @State var messages: [OpenAIAPI.Message] = [
-        .init(role: .system, content: "你好，我是修勾。有什么要问我的?")
-    ]
+    @Environment(\.presentationMode) var presentaionMode: Binding<PresentationMode>
+    
+    @Binding var conversation: Conversation
+    @Binding var messages: [OpenAIAPI.Message]
     @State var input = ""
     @State var sendButtonColor = Color.gray
     @State var showRetry = false
@@ -22,7 +23,7 @@ struct DogeChatView: View {
     @State var showClearSuccess = false
     @State private var completion: StreamingCompletion? = nil
     
-    @Binding var showConfigView: Bool
+    @State var finishedButtonLoading = false
     
     var body: some View {
         VStack {
@@ -38,7 +39,7 @@ struct DogeChatView: View {
                     .bold()
                 Spacer()
                 Button(action: {
-                    showConfigView = true
+                    appConfig.activeSheet = .bootstrapConfigSheet
                 }) {
                     Image(systemName: "gear")
                          .resizable()
@@ -95,7 +96,12 @@ struct DogeChatView: View {
                 }
                 .onChange(of: messages) { _ in
                     withAnimation {
-                        scrollViewProxy.scrollTo(messages.count - 1, anchor: .top)
+                        scrollViewProxy.scrollTo(messages.count - 1, anchor: .bottom)
+                    }
+                }
+                .onAppear {
+                    withAnimation {
+                        scrollViewProxy.scrollTo(messages.count - 1, anchor: .bottom)
                     }
                 }
             }
@@ -153,6 +159,61 @@ struct DogeChatView: View {
                 }
             }
             .padding([.horizontal, .bottom])
+            .onTapGesture {
+                // hide keyboard
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
+            .toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        Task {
+                            if messages.isEmpty { return }
+                            finishedButtonLoading = true
+                            var messagesCopy = messages.map{
+                                OpenAIAPI.Message(role: $0.role, content: $0.content)
+                            }
+                            messagesCopy.removeFirst()
+                            messagesCopy.append(
+                                OpenAIAPI.Message(role: .user, content: "Title for the above conversation within 5 words")
+                            )
+                            let title = try await appConfig.openAI_API.completeChat(.init(messages: messagesCopy))
+                            var translateMessages: [OpenAIAPI.Message] = [
+                                .init(role: .user, content: "将下面这句话翻译成中文")
+                            ]
+                            translateMessages.append(
+                                .init(role: .user, content: title)
+                            )
+                            var outline = try await appConfig.openAI_API.completeChat(.init(messages: translateMessages))
+                            if outline.hasSuffix("。") ||
+                                outline.hasSuffix("？") ||
+                                outline.hasSuffix("！") {
+                                outline = String(outline.dropLast())
+                            }
+                            conversation.outline = outline
+                            finishedButtonLoading = false
+                            presentaionMode.wrappedValue.dismiss()
+                        }
+                    }) {
+                        if finishedButtonLoading {
+                            Spinner()
+                        } else {
+                            Text("完成")
+                            .foregroundColor(.accentColor)
+                        }
+                           
+                    }
+                    .disabled(completion != nil)
+                }
+            }
+            .onAppear {
+                Task {
+                    let usage = await appConfig.openAIAPITools.usage()
+                    withAnimation {
+                        appConfig.usage = usage
+                    }
+                }
+            }
+            .navigationTitle(conversation.outline ?? "新的聊天")
         }
     }
     
@@ -170,7 +231,7 @@ struct DogeChatView: View {
     
     func _sendMessage() async {
         withAnimation {
-            self.completion = try! OpenAIAPI(apiKey: appConfig.OPEN_AI_API_KEY, origin: appConfig.OPEN_AI_ORIGIN).completeChatStreamingWithObservableObject(.init(messages: messages))
+            self.completion = try! appConfig.openAI_API.completeChatStreamingWithObservableObject(.init(messages: messages))
         }
     }
 }

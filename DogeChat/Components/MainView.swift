@@ -9,36 +9,35 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var appConfig: AppConfig
-    @State var showConfigView: Bool = false
     var body: some View {
-        ZStack {
-            DogeChatView(showConfigView: $showConfigView)
-                .onAppear {
-                    let validateResult = appConfig.openAIAPITools.validateOpenAIAPIKey()
-                    if  !validateResult {
-                        showConfigView = true
-                    }
-                    Task {
-                        appConfig.usage = await appConfig.openAIAPITools.usage()
-                    }
+        ConversationListView()
+            .onAppear {
+                let validateResult = appConfig.openAIAPITools.validateOpenAIAPIKey()
+                if  !validateResult {
+                    appConfig.activeSheet = .bootstrapConfigSheet
                 }
-                .sheet(isPresented: $showConfigView, onDismiss: {
-                    let validateResult = appConfig.openAIAPITools.validateOpenAIAPIKey()
-                    if  !validateResult {
-                        showConfigView = true
-                    }
-                }) {
+            }
+            .sheet(item: $appConfig.activeSheet, onDismiss: {
+                // onDismiss and no apikey, activate the bootstrapConfig
+                let validateResult = appConfig.openAIAPITools.validateOpenAIAPIKey()
+                if  !validateResult {
+                    appConfig.activeSheet = .bootstrapConfigSheet
+                }
+            }) { item in
+                switch item {
+                case .bootstrapConfigSheet:
                     if #available(iOS 16.0, *) {
-                        ConfigView(showConfigView: $showConfigView)
+                        ConfigView()
                             .presentationDetents([.height(280), .medium, .large])
                             .presentationDragIndicator(.automatic)
                     } else {
                         // iOS 15 or earlier
-                        ConfigView(showConfigView: $showConfigView)
+                        ConfigView()
                     }
+                case .settingSheet:
+                    SettingView()
                 }
-                    
-        }
+            }
     }
 }
 
