@@ -11,6 +11,8 @@ import OpenAIStreamingCompletions
 struct ConversationListView: View {
     @StateObject var conversationsStore: ConversationStore = ConversationStore()
     private var defaultMessage: [OpenAIAPI.Message] = [.init(role: .system, content: "你好，我是修勾。有什么要问我的?")]
+    let isPad = UIDevice.current.userInterfaceIdiom == .pad
+    
     var body: some View {
         NavigationView {
             List {
@@ -40,7 +42,7 @@ struct ConversationListView: View {
                         NavigationLink(destination: DogeChatView(conversation: $conversation, messages: $conversation.messages), isActive: $conversation.isActive) {
                             Label(conversation.outline ?? "新的聊天", systemImage: "captions.bubble")
                                 .font(.headline)
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(isPad ? Color("BaseText"): .accentColor)
                         }
                     }
                     .onDelete { offsets in
